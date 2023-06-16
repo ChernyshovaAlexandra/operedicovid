@@ -1,0 +1,140 @@
+.popup {
+    &-container {
+        width: 100vw;
+        height: 100vh;
+        background: rgba(black, 0.4);
+        backdrop-filter: blur(2px);
+        z-index: 999;
+    }
+    &-inner {
+        max-width: 1040px;
+        width: 100%;
+        background: #f5f6f8;
+        @include gilroy;
+        font-size: 1.25rem;
+        max-height: 100vh;
+        overflow-y: auto;
+        @media screen and (min-width: 1000px) {
+            max-height: 80vh;
+            &.opros {
+                max-height: 96vh;
+            }
+        }
+        h2 {
+            font-family: "Gilroy";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            line-height: 48px;
+            color: #0c0c0c;
+            text-transform: none;
+            &:not(:first-child) {
+                margin-top: 3rem;
+            }
+            @media screen and (max-height: 820px) and (min-width: 900px) {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                max-width: 85%;
+                line-height: 1.5;
+            }
+        }
+        h3 {
+            font-family: "Gilroy";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.5rem;
+            @media screen and (max-height: 820px) and (min-width: 900px) {
+                font-size: 1.25rem;
+            }
+        }
+        p {
+            font-family: "Gilroy";
+            font-size: 1rem;
+            line-height: 22px;
+            margin-bottom: 1rem;
+            &:not(.text-pink) {
+                color: #75767b;
+            }
+            &.font-bold {
+                font-size: 1.125rem;
+                margin-bottom: 0.25rem;
+                margin-top: 1.5rem;
+                &.black {
+                    color: #0c0c0c;
+                }
+                @media screen and (max-height: 820px) and (min-width: 900px) {
+                    font-size: 1rem;
+                    margin-top: 1.2rem;
+                }
+            }
+            ul {
+                list-style: initial;
+                padding-left: 1rem;
+                li {
+                    padding-left: 0.5rem;
+                    display: list-item;
+                }
+            }
+        }
+    }
+}
+.checkpoint {
+    &-container {
+        @media screen and (max-height: 820px) and (min-width: 900px) {
+            padding: 1rem;
+        }
+    }
+    @media screen and (max-height: 820px) and (min-width: 900px) {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+}
+.check {
+    top: 5px;
+    -webkit-appearance: none;
+    display: none;
+    & + label {
+        cursor: pointer;
+        position: relative;
+        padding-left: 2.5rem;
+        color: #75767b;
+        &:hover {
+            color: $black;
+            &::before {
+                background: rgba(#f22e62, 0.3);
+            }
+        }
+        &::before {
+            content: "";
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 3px;
+            background: #fff;
+            border: 1px solid gray;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+    }
+    &:checked {
+        & + label {
+            &::before {
+                background-color: #f22e62;
+                border-color: #f22e62;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0.15rem;
+                top: calc(5px + 0.15rem);
+                width: 1rem;
+                height: 1rem;
+                background: url(/images/check.svg) no-repeat center;
+                background-size: contain;
+            }
+        }
+    }
+}

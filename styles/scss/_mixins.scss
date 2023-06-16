@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "Bebas Neue";
+    src: url("/fonts/BEBASNEUE_BOLD.otf");
+}
+@font-face {
+    font-family: "Gilroy";
+    src: local("Gilroy"), local("Gilroy-Regular"), url("/fonts/Gilroy-Regular.woff2") format("woff2"),
+        url("/fonts/Gilroy-Regular.woff") format("woff"), url("/fonts/Gilroy-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Gilroy";
+    src: local("Gilroy"), local("Gilroy-Semibold"), url("/fonts/Gilroy-Semibold.woff2") format("woff2"),
+        url("/fonts/Gilroy-Semibold.woff") format("woff"), url("/fonts/Gilroy-Semibold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+@mixin header {
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 5rem;
+    filter: drop-shadow(-2px 2px 43px #3e6bf4);
+    line-height: 1;
+    @media screen and (max-width:1200px){
+        font-size: 3.6rem;
+    }
+}
+@mixin gilroy {
+    font-family: "Gilroy";
+    font-style: normal;
+}
+@mixin headerSecondary {
+    @include gilroy;
+    line-height: 1.58;
+    text-transform: uppercase;
+}
+@mixin button {
+    color: white;
+    background: #f11952;
+    border-radius: 30px;
+    padding: 0.75rem 1.5rem;
+    
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+}

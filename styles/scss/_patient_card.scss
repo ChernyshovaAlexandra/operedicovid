@@ -1,0 +1,85 @@
+.swiper-container,
+.swiper-horizontal {
+    @media screen and (max-width: 1000px) {
+        display: grid !important;
+    }
+}
+.next,
+.prev {
+    &[aria-disabled="true"] {
+        opacity: 45%;
+    }
+}
+.patient-card {
+    padding: 1.625rem;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    @media screen and (max-width: 1000px) {
+        padding: 1rem;
+    }
+    &_data {
+        @media screen and (max-width: 1000px) {
+            margin-top: 0.75rem;
+        }
+        &_name {
+            font-family: "Gilroy";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.5rem;
+            color: $deepPink;
+            margin-bottom: 1.5rem;
+            display: block;
+            @media screen and (max-width: 1000px) {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+        }
+        &_diagnose {
+            font-family: "Gilroy";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.75rem;
+            line-height: 2.25rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #030c26;
+            @media screen and (max-width: 1000px) {
+                font-size: 1.125rem;
+                max-width: 90%;
+                line-height: 1.5rem;
+            }
+        }
+        &_process {
+            font-family: "Gilroy";
+            font-style: normal;
+            &.font-bold {
+                font-weight: 600;
+                display: block;
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+                @media screen and (max-width: 1000px) {
+                    margin-top: 0.75rem;
+                }
+            }
+            font-size: 1rem;
+            line-height: 1.625rem;
+            color: #030c26;
+            @media screen and (max-width: 1000px) {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+        }
+    }
+    &_img {
+        display: grid;
+        img {
+            filter: drop-shadow(2px 2px 2rem blue);
+            position: static;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
