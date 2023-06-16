@@ -1,7 +1,7 @@
 import React from "react";
 import { animated } from '@react-spring/web'
-import Icon from "./icon";
 import { coordinates } from '../constants/coordinates'
+import Icon from "./Icon";
 
 
 

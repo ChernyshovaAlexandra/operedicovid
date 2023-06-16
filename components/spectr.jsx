@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "./icon";
+import Icon from "./Icon";
 import { motion } from 'framer-motion'
 import { animated } from '@react-spring/web'
 import { coordinates } from '../constants/coordinates';
