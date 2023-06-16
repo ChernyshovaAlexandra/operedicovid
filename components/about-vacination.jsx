@@ -51,7 +51,7 @@ const AboutVacination = ({ blue_bg_block, blue_bg_block_image, scrollYProgress, 
 
                     }}>
                     <animated.picture className="select-none w-full object-cover h-100vh">
-                        <source srcSet={require(`/public/images/secBG.jpg?resize&size=1721px&format=avif`)} type="image/webp" />
+                        <source srcSet={require(`/public/images/secBG.jpg?resize&size=1721&format=avif`)} type="image/webp" />
                         <img className='select-none w-full object-cover h-100vh' src={require(`/public/images/secBG.jpg?resize&size=860`)} alt="" loading="lazy" />
                     </animated.picture>
                 </animated.div>
