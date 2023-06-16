@@ -7,11 +7,14 @@ import BigVideo from "./big-video";
 import PeopleStories from "./people-stories";
 import VideoCorona from "./video-coronavirus";
 import FAQ from "./faq";
+import WINDOW from "/constants/win";
+
 import Block11 from "./Block11";
 import Block12 from "./Block12";
 import Block13 from "./Block13";
 import Modal from "./Modal";
 import Popup from "./Popup";
+import Mobile from "./Mobile";
 
 
 
@@ -19,7 +22,7 @@ import Popup from "./Popup";
 const FullPage = () => {
     const containerRef = useRef(null);
 
-    // const [mobile, setMobile] = useState(window.innerWidth <= 1000)
+    const [mobile, setMobile] = useState(WINDOW.innerWidth <= 1000)
     const [modal, showModal] = useState(false);
     const [video, videoVisible] = useState(true);
     const [fullScreen, openVideoFull] = useState(false)
@@ -35,55 +38,57 @@ const FullPage = () => {
     const [raysSpectrTwoWhite, set_raysSpectrTwoWhite] = useSpring(() => ({ opacity: 0, color: 'white', display: 'none' }))
     const [raysSpectrTwoBlue, set_raysSpectrTwoBlue] = useSpring(() => ({ display: 'none' }));
     const [spectrZashityAll, spectrZashityAll_set] = useSpring(() => ({ opacity: 0 }))
-
+    useEffect(() => {
+        const handleResize = () => {
+          setMobile(WINDOW.innerWidth <= 1000)
+        }
+        window.addEventListener('resize', handleResize)
+      })
     const { scrollYProgress } = useScroll({
         constiner: containerRef,
         onChange: ({ value: { scrollYProgress } }) => {
-            if (window.innerWidth > 740) {
-                set_main_bg_gradient.start({
-                    opacity: scrollYProgress > coordinates.block1.coordinates[0] + .004 ? 0 : 1
-                })
-                mainBgRaysApi.start({
-                    opacity: scrollYProgress >= coordinates.block1.coordinates[0] + .01 ? 0 : 1,
-                    transform: scrollYProgress < coordinates.block2.coordinates[0] - .005 ? 'scale(1.35)' : 'scale(3)'
-                });
+            set_main_bg_gradient.start({
+                opacity: scrollYProgress > coordinates.block1.coordinates[0] + .004 ? 0 : 1
+            })
+            mainBgRaysApi.start({
+                opacity: scrollYProgress >= coordinates.block1.coordinates[0] + .01 ? 0 : 1,
+                transform: scrollYProgress < coordinates.block2.coordinates[0] - .005 ? 'scale(1.35)' : 'scale(3)'
+            });
 
-                blueBgBlockImageApi.start({
-                    opacity: scrollYProgress >= coordinates.block2.coordinates[0] ? 0 : 1,
-                    transform: scrollYProgress > coordinates.block2.coordinates[1] + .005 ? 'translateX(100%)' :
-                        scrollYProgress > coordinates.block2.coordinates[1] && scrollYProgress < coordinates.block2.coordinates[1] + .005 ? 'translateX(40%)' : 'translateX(0%)',
-                    clipPath: scrollYProgress > coordinates.block2.coordinates[1] ?
-                        'polygon(32% 0px, 100% 0px, 100% 50%, 100% 100%, 32% 100%, 13% 50%)' :
-                        'polygon(0% 0px, 100% 0px, 100% 50%, 100% 100%, 40% 100%, 0% 100%)'
-                });
+            blueBgBlockImageApi.start({
+                opacity: scrollYProgress >= coordinates.block2.coordinates[0] ? 0 : 1,
+                transform: scrollYProgress > coordinates.block2.coordinates[1] + .005 ? 'translateX(100%)' :
+                    scrollYProgress > coordinates.block2.coordinates[1] && scrollYProgress < coordinates.block2.coordinates[1] + .005 ? 'translateX(40%)' : 'translateX(0%)',
+                clipPath: scrollYProgress > coordinates.block2.coordinates[1] ?
+                    'polygon(32% 0px, 100% 0px, 100% 50%, 100% 100%, 32% 100%, 13% 50%)' :
+                    'polygon(0% 0px, 100% 0px, 100% 50%, 100% 100%, 40% 100%, 0% 100%)'
+            });
 
 
-                move_main_photo.start({
-                    display: scrollYProgress > coordinates.block3.coordinates[0] && scrollYProgress < coordinates.block4.coordinates[0] ? 'none' : 'block'
-                })
-                blueBgBlockApi.start({
-                    transform: scrollYProgress >= coordinates.block2.coordinates[0] ? 'translate(0)' : 'translateX(-35%)',
-                    opacity: scrollYProgress > coordinates.block2.coordinates[0] ? 1 : 0
-                })
-                spectrZashityAll_set.start({
-                    opacity: scrollYProgress > coordinates.block4.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[1] ? 1 : 0
-                });
+            move_main_photo.start({
+                display: scrollYProgress > coordinates.block3.coordinates[0] && scrollYProgress < coordinates.block4.coordinates[0] ? 'none' : 'block'
+            })
+            blueBgBlockApi.start({
+                transform: scrollYProgress >= coordinates.block2.coordinates[0] ? 'translate(0)' : 'translateX(-35%)',
+                opacity: scrollYProgress > coordinates.block2.coordinates[0] ? 1 : 0
+            })
+            spectrZashityAll_set.start({
+                opacity: scrollYProgress > coordinates.block4.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[1] ? 1 : 0
+            });
 
-                set_raysSpectrOneBlue.start({
-                    opacity: scrollYProgress > coordinates.block4.coordinates[0] && scrollYProgress < coordinates.block5.coordinates[0] ? 1 : 0,
-                    display: scrollYProgress > coordinates.block4.coordinates[0] && scrollYProgress < coordinates.block5.coordinates[0] ? 'flex' : 'none'
-                })
+            set_raysSpectrOneBlue.start({
+                opacity: scrollYProgress > coordinates.block4.coordinates[0] && scrollYProgress < coordinates.block5.coordinates[0] ? 1 : 0,
+                display: scrollYProgress > coordinates.block4.coordinates[0] && scrollYProgress < coordinates.block5.coordinates[0] ? 'flex' : 'none'
+            })
 
-                set_raysSpectrTwoWhite.start({
-                    opacity: scrollYProgress > coordinates.block5.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[0] ? 1 : 0,
-                    color: scrollYProgress > coordinates.block5.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[0] ? '#092477' : '#fff',
-                    display: scrollYProgress > coordinates.block5.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[0] ? 'flex' : 'none'
-                })
-                set_raysSpectrTwoBlue.start({
-                    display: scrollYProgress > coordinates.block6.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[1] ? 'flex' : 'none'
-                })
-            }
-
+            set_raysSpectrTwoWhite.start({
+                opacity: scrollYProgress > coordinates.block5.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[0] ? 1 : 0,
+                color: scrollYProgress > coordinates.block5.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[0] ? '#092477' : '#fff',
+                display: scrollYProgress > coordinates.block5.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[0] ? 'flex' : 'none'
+            })
+            set_raysSpectrTwoBlue.start({
+                display: scrollYProgress > coordinates.block6.coordinates[0] && scrollYProgress < coordinates.block6.coordinates[1] ? 'flex' : 'none'
+            })
         },
         default: {
             immediate: true,
@@ -91,35 +96,36 @@ const FullPage = () => {
     });
     return (
         <>
-            <div ref={containerRef} >
-                <div className="relative content blue-bg-grad">
-                    <Nav scrollYProgress={scrollYProgress} showPopup={showPopup} />
-                    <div className="overflow-y-scroll overflow-x-hidden bg-lavender relative z-30" style={{ height: '425vh' }}>
-                        <Main
-                            showPopup={showPopup}
-                            spectrZashityAll={spectrZashityAll}
-                            raysSpectrTwoBlue={raysSpectrTwoBlue}
-                            raysSpectrTwoWhite={raysSpectrTwoWhite}
-                            raysSpectrOneBlue={raysSpectrOneBlue}
-                            main_bg_gradient={main_bg_gradient}
-                            blue_bg_block={blue_bg_block}
-                            blue_bg_block_image={blue_bg_block_image}
-                            mainBgRaysAnim={mainBgRaysAnim}
-                            scrollYProgress={scrollYProgress}
-                            main_photo_to_right={main_photo_to_right}
-                        />
+            {mobile ? <Mobile showModal={showModal} showPopup={showPopup} scrollYProgress={scrollYProgress} /> :
+                <div ref={containerRef} >
+                    <div className="relative content blue-bg-grad">
+                        <Nav scrollYProgress={scrollYProgress} showPopup={showPopup} />
+                        <div className="overflow-y-scroll overflow-x-hidden bg-lavender relative z-30" style={{ height: '425vh' }}>
+                            <Main
+                                showPopup={showPopup}
+                                spectrZashityAll={spectrZashityAll}
+                                raysSpectrTwoBlue={raysSpectrTwoBlue}
+                                raysSpectrTwoWhite={raysSpectrTwoWhite}
+                                raysSpectrOneBlue={raysSpectrOneBlue}
+                                main_bg_gradient={main_bg_gradient}
+                                blue_bg_block={blue_bg_block}
+                                blue_bg_block_image={blue_bg_block_image}
+                                mainBgRaysAnim={mainBgRaysAnim}
+                                scrollYProgress={scrollYProgress}
+                                main_photo_to_right={main_photo_to_right}
+                            />
+                        </div>
+                        <BigVideo />
+                        <PeopleStories scrollYProgress={scrollYProgress} />
+                        <VideoCorona />
+                        <FAQ />
+                        <Block11 />
+                        <Block12 />
+                        <Block13 showModal={showModal} />
+
                     </div>
-                    <BigVideo />
-                    <PeopleStories scrollYProgress={scrollYProgress} />
-                    <VideoCorona />
-                    <FAQ /> 
-                    <Block11 />
-                    <Block12 />
-                    <Block13 showModal={showModal} />
-
                 </div>
-            </div>
-
+            }
             {popup ? <Popup showPopup={showPopup} popup={popup} /> : null}
             {modal ? <Modal content={modal} close={showModal} /> : null}
             {video ?
@@ -167,7 +173,7 @@ const FullPage = () => {
 
                         </div>}
                 </div> : null}
-                </>
+        </>
     )
 }
 export default FullPage;

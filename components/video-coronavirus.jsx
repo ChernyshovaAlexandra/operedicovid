@@ -9,7 +9,7 @@ const VideoCorona = () => {
                     <div className="w-full max-[1000px]:relative img-container-vid max-[1000px]:rounded-2xl overflow-hidden">
                         <picture className="max-[1000px]:absolute max-[1000px]:h-full max-[1000px]:w-full">
                             <source srcSet={require(`/public/images/video-bg.jpg?resize&size=1280&format=webp`)} type="image/webp" />
-                            <img className="w-full"
+                            <img className="w-full block"
                                 src={require(`/public/images/video-bg.jpg?resize&size=640&format=webp`)} alt="" loading="lazy" />
                         </picture>
                     </div>

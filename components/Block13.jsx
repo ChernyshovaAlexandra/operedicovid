@@ -13,27 +13,40 @@ const Block13 = ({ showModal }) => {
                             <source srcSet={require(`/public/images/1.jpg?resize&size=288&format=webp`)} type="image/webp" />
                             <img className="w-full h-full object-cover -my-1 object-center  max-[1000px]:hidden" src={require(`/public/images/1.jpg?resize&size=144`)} alt="" loading="lazy" />
                         </picture>
-                        {/* <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block" src={img11} /> */}
+                        <picture>
+                            <source srcSet={require(`/public/images/11.jpg?resize&size=500&format=webp`)} type="image/webp" />
+                            <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block"
+                                src={require(`/public/images/11.jpg?resize&size=250`)} alt="" loading="lazy" />
+                        </picture>
                     </div>
                     <div className="bg-blue rounded-xl grid items-center overflow-hidden">
-                        {/* <img className="w-full h-full object-cover -my-1 object-center max-[1000px]:hidden" src={img2} />
-                        <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block" src={img21} /> */}
+                        <picture>
+                            <source srcSet={require(`/public/images/21.jpg?resize&size=500&format=webp`)} type="image/webp" />
+                            <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block"
+                                src={require(`/public/images/21.jpg?resize&size=250`)} alt="" loading="lazy" />
+                        </picture>
                         <picture>
                             <source srcSet={require(`/public/images/2.jpg?resize&size=288&format=webp`)} type="image/webp" />
                             <img className="w-full h-full object-cover -my-1 object-center max-[1000px]:hidden" src={require(`/public/images/2.jpg?resize&size=144`)} alt="" loading="lazy" />
                         </picture>
                     </div>
                     <div className="bg-blue rounded-xl grid items-center overflow-hidden">
-                        {/* <img className="w-full h-full object-cover -my-1 object-center max-[1000px]:hidden" src={img3} />
-                        <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block" src={img31} /> */}
+                        <picture>
+                            <source srcSet={require(`/public/images/31.jpg?resize&size=500&format=webp`)} type="image/webp" />
+                            <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block"
+                                src={require(`/public/images/31.jpg?resize&size=250`)} alt="" loading="lazy" />
+                        </picture>
                         <picture>
                             <source srcSet={require(`/public/images/3.jpg?resize&size=288&format=webp`)} type="image/webp" />
                             <img className="w-full h-full object-cover -my-1 object-center max-[1000px]:hidden" src={require(`/public/images/3.jpg?resize&size=144`)} alt="" loading="lazy" />
                         </picture>
                     </div>
                     <div className="bg-blue rounded-xl grid items-center overflow-hidden">
-                        {/* <img className="w-full h-full object-cover -my-1 object-center max-[1000px]:hidden" src={img4} />
-                        <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block" src={img41} /> */}
+                    <picture>
+                            <source srcSet={require(`/public/images/41.jpg?resize&size=500&format=webp`)} type="image/webp" />
+                            <img className="w-full h-full object-cover -my-1 object-center hidden max-[1000px]:block"
+                                src={require(`/public/images/41.jpg?resize&size=250`)} alt="" loading="lazy" />
+                        </picture>
                         <picture>
                             <source srcSet={require(`/public/images/4.jpg?resize&size=288&format=webp`)} type="image/webp" />
                             <img className="w-full h-full object-cover -my-1 object-center max-[1000px]:hidden" src={require(`/public/images/4.jpg?resize&size=144`)} alt="" loading="lazy" />

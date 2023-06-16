@@ -691,6 +691,13 @@ ol {
         overflow: hidden;
     }
 }
+ol {
+    li{
+        a{
+            word-wrap: break-word
+        }
+    }
+}
 @import "./patient_card";
 @import "./faq";
 @import "./animations";
