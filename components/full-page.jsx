@@ -40,10 +40,16 @@ const FullPage = () => {
     const [spectrZashityAll, spectrZashityAll_set] = useSpring(() => ({ opacity: 0 }))
     useEffect(() => {
         const handleResize = () => {
-          setMobile(WINDOW.innerWidth <= 1000)
-        }
-        window.addEventListener('resize', handleResize)
-      })
+            setMobile(window.innerWidth <= 1000);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     const { scrollYProgress } = useScroll({
         constiner: containerRef,
         onChange: ({ value: { scrollYProgress } }) => {
