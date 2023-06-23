@@ -33,6 +33,7 @@ const PeopleStories = () => {
     const nextRef = useRef(null);
 
     useEffect(() => {
+
         const swiperEl = document.querySelector('swiper-container');
         const swiperParams = {
             navigation: {
@@ -42,10 +43,8 @@ const PeopleStories = () => {
 
             breakpoints: {
                 0: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 1,
-                    pagination: true,
-
+                    slidesPerView: 1,
+                    spaceBetween: 10,
                 },
                 640: {
                     slidesPerView: 2.2,
@@ -64,14 +63,16 @@ const PeopleStories = () => {
 
         Object.assign(swiperEl, swiperParams);
         swiperEl.initialize();
+        console.log(123)
     }, [])
     return (
         <section className="min-[1000px]:pb-12 min-[1000px]:pt-36 py-16 bg-blue-grad w-full z-50 relative" id="risk_groups">
             <div className="contentmin-[1000px]:mx-auto max-[1000px]:w-11/12 min-[1000px]:px-12 px-5">
-                <h2 className="font-normal text-4xl text-white header-sec">Кому может быть необходима<br /> пассивная иммунизация от Covid-19?</h2>
+                <h2 className="font-normal text-4xl text-white header-sec">Кому может быть необходима<br />
+                    пассивная иммунизация от Covid-19?</h2>
             </div>
             <div className="pl-5 min-[1000px]:pl-12 min-[1000px]:mx-auto swiper-inner-cont">
-                <swiper-container init="false">
+                <swiper-container init={false} style={{ 'minHeight': '250px' }}>
                     {patients && patients.map((pat, id) => (
                         <swiper-slide key={id} >
                             <PatientCard last={id === patients.length - 1} data={pat} odd={id % 2 === 0} />

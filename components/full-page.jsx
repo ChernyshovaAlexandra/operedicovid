@@ -24,7 +24,7 @@ const FullPage = () => {
 
     const [mobile, setMobile] = useState(WINDOW.innerWidth <= 1000)
     const [modal, showModal] = useState(false);
-    const [video, videoVisible] = useState(true);
+    const [video, videoVisible] = useState(false);
     const [fullScreen, openVideoFull] = useState(false)
     const [popup, showPopup] = useState(false);
     const [main_photo_to_right, move_main_photo] = useSpring(() => ({ transform: 'translateX(0%)', display: 'block', opacity: 1 }));
@@ -49,7 +49,9 @@ const FullPage = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
+    useEffect(() => {
+        videoVisible(true)
+    }, [])
     const { scrollYProgress } = useScroll({
         constiner: containerRef,
         onChange: ({ value: { scrollYProgress } }) => {
@@ -102,8 +104,11 @@ const FullPage = () => {
     });
     return (
         <>
-            {mobile ? <Mobile showModal={showModal} showPopup={showPopup} scrollYProgress={scrollYProgress} /> :
-                <div ref={containerRef} >
+            {mobile ?
+                <Mobile showModal={showModal} showPopup={showPopup} scrollYProgress={scrollYProgress} />
+                :
+
+                <div ref={containerRef} className="md:block hidden" >
                     <div className="relative content blue-bg-grad">
                         <Nav scrollYProgress={scrollYProgress} showPopup={showPopup} />
                         <div className="overflow-y-scroll overflow-x-hidden bg-lavender relative z-30" style={{ height: '425vh' }}>

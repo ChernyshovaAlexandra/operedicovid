@@ -7,8 +7,7 @@ const PatientCard = ({ data, odd, last }) => {
             <div className="rounded-xl overflow-hidden w-full relative patient-card_img bg-blue-grad">
                 <picture>
                     <source srcSet={data.src} type="image/webp" />
-                    <img className='absolute top-0 left-0 w-full h-full object-cover object-center'
-                        src={data.img} alt="" loading="lazy" />
+                    <img className='absolute top-0 left-0 w-full h-full object-cover object-center' src={data.img} alt="" />
                 </picture>
             </div>
             <div className="mt-9 patient-card_data">
